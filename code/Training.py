@@ -20,7 +20,7 @@ n_j= params["n_jobs"]
 
 with dvc.api.open(
         'out/X_train.csv',
-        repo='https://github.com/shruthi-git-actions/dvc_demo.git',
+        repo='https://github.com/shruthi-git-actions/dvc_june17.git',
         remote='remote_storage',
         encoding='utf-8'
         ) as fd1:
@@ -28,7 +28,7 @@ with dvc.api.open(
 X_train = dd.read_csv(X_train_c)
 with dvc.api.open(
         'out/x.csv',
-        repo='https://github.com/shruthi-git-actions/dvc_demo.git',
+        repo='https://github.com/shruthi-git-actions/dvc_june17.git',
         remote='remote_storage',
         encoding='utf-8'
         ) as fd2:
@@ -37,7 +37,7 @@ with dvc.api.open(
 x =dd.read_csv(x_c)
 with dvc.api.open(
         'out/y_train.csv',
-        repo='https://github.com/shruthi-git-actions/dvc_demo.git',
+        repo='https://github.com/shruthi-git-actions/dvc_june17.git',
         remote='remote_storage',
         encoding='utf-8'
         ) as fd3:
