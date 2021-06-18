@@ -15,7 +15,7 @@ import yaml
 
 params = yaml.safe_load(open("/home/ubuntu/git_env/dvc_june18/params.yaml"))["prepare"]
 
-file = tarfile.open('/home/shruthi/Shruthi_Tasks/GiTAction/dataset/dataset_small.tar.gz')
+file = tarfile.open('/home/ubuntu/data/dataset_small.tar.gz')
 file.extractall('./')
 split = params["split"]
 
