@@ -13,7 +13,7 @@ import os, uuid
 import json
 import yaml
 
-params = yaml.safe_load(open("/home/shruthi/Shruthi_Tasks/GiTAction/dvc_june10/dvc_demo/params.yaml"))["Training"]
+params = yaml.safe_load(open("home/ubuntu/git_env/dvc_june18/params.yaml"))["Training"]
 n_est = params["n_estimators"]
 n_j= params["n_jobs"]
 
