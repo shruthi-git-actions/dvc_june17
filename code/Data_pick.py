@@ -13,7 +13,7 @@ import os, uuid
 import tarfile
 import yaml
 
-params = yaml.safe_load(open("/home/shruthi/Shruthi_Tasks/GiTAction/dvc_june10/dvc_demo/params.yaml"))["prepare"]
+params = yaml.safe_load(open("/home/ubuntu/git_env/dvc_june18/params.yaml"))["prepare"]
 
 file = tarfile.open('/home/shruthi/Shruthi_Tasks/GiTAction/dataset/dataset_small.tar.gz')
 file.extractall('./')
