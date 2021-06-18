@@ -14,11 +14,20 @@ import tarfile
 import yaml
 
 params = yaml.safe_load(open("home/ubuntu/git_env/dvc_june18/params.yaml"))["featurize"]
-no_columns=params["no_columns"]
+with dvc.api.open(
+        'test_data.csv',
+        repo='https://github.com/shruthi-git-actions/dvc_demo.git',
+        remote='remote_storage',
+        encoding='utf-8'
+        ) as fd1:
+    main_df_c=pd.read_csv(fd1)
+main_df = dd.read_csv(main_df_c)
 
-main_df = dd.read_csv('test_data.csv')
-df=main_df[["eventValue","specific_open","specific_close","gateway_change","lost_sight","temp_raise","temp_fall", "came_here"]]
 
+
+
+df=main_df[["eventName", "eventValue", "specific_open", "specific_close", "gateway_change", "lost_sight", "temp_raise", "temp_fall", "came_here","human_event"]]
+no_columns=len(df.columns)
 x=df.iloc[:,0:no_columns]
 x=x.categorize()
 de = DummyEncoder()
