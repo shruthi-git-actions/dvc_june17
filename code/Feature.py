@@ -14,12 +14,18 @@ import json
 import yaml
 
 params = yaml.safe_load(open("home/ubuntu/git_env/dvc_june18/params.yaml"))["featurize"]
-no_columns = params["no_columns"]
-main_df = dd.read_csv('/home/shruthi/Shruthi_Tasks/GiTAction/dvc_june10/dvc_demo/train_data.csv')
-print(main_df)
-df=main_df[["eventValue","specific_open","specific_close","gateway_change","lost_sight","temp_raise","temp_fall", "came_here"]]
-print(no_columns)
+with dvc.api.open(
+        'train_data.csv',
+        repo='https://github.com/shruthi-git-actions/dvc_demo.git',
+        remote='remote_storage',
+        encoding='utf-8'
+        ) as fd:
+    main_df_c=pd.read_csv(fd)
+main_df = dd.read_csv(main_df_c)
 
+df=main_df[["eventName", "eventValue", "specific_open", "specific_close", "gateway_change", "lost_sight", "temp_raise", "temp_fall", "came_here","human_event"]]
+
+no_columns=len(df.columns)
 x=df.iloc[:,0:no_columns]
 y_train=df.iloc[:,-1]
 
