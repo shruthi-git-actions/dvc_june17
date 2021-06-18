@@ -1,0 +1,25 @@
+schema: '2.0'
+stages:
+  Data:
+    cmd: python code/Data_pick.py
+    deps:
+    - path: code/Data_pick.py
+      md5: a66e47cd79daa13c6b40c6986f2b6272
+      size: 792
+    - path: dataset_small/dataset_small.csv
+      md5: cf897b9127b852b49c8766eb0bd983ff
+      size: 91897
+  Feature:
+    cmd: python code/Feature.py
+    deps:
+    - path: code/Feature.py
+      md5: 3fdecd718cc8e6bc03cf94a32a18cf76
+      size: 1177
+    - path: train_data.csv
+      md5: 02ee457e9502b19e4df8cc191b415a6a
+      size: 84691
+    outs:
+    - path: out
+      md5: 2114ae56ef02a12ffc265fd889346d07.dir
+      size: 63759
+      nfiles: 3

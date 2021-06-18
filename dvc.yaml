@@ -1,0 +1,33 @@
+stages:
+
+  Data:
+    cmd: python code/Data_pick.py 
+    deps:
+      - code/Data_pick.py
+      - dataset_small/dataset_small.csv
+    
+      
+  
+  Feature:
+    cmd: python code/Feature.py 
+    deps:
+      - code/Feature.py
+      - train_data.csv
+    outs:
+      - out
+
+  Training:
+    cmd: python code/Training.py 
+    deps:
+      - code/Training.py
+      - out
+    outs:
+      - HumanEvent_Model.pkl 
+
+  Evaluate:
+    cmd: python code/Evaluate.py 
+    deps:
+      - code/Evaluate.py 
+      - test_data.csv
+    outs:
+      - out1

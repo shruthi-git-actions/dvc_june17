@@ -14,7 +14,7 @@ import tarfile
 import yaml
 import dvc.api
 
-params = yaml.safe_load(open("home/ubuntu/git_env/dvc_june18/params.yaml"))["featurize"]
+params = yaml.safe_load(open("/home/ubuntu/git_env/dvc_june18/params.yaml")["featurize"]
 with dvc.api.open(
         'test_data.csv',
         repo='https://github.com/shruthi-git-actions/dvc_june17.git',
