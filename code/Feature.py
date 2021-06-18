@@ -13,7 +13,7 @@ import os, uuid
 import json
 import yaml
 
-params = yaml.safe_load(open("/home/shruthi/Shruthi_Tasks/GiTAction/dvc_june10/dvc_demo/params.yaml"))["featurize"]
+params = yaml.safe_load(open("home/ubuntu/git_env/dvc_june18/params.yaml"))["featurize"]
 no_columns = params["no_columns"]
 main_df = dd.read_csv('/home/shruthi/Shruthi_Tasks/GiTAction/dvc_june10/dvc_demo/train_data.csv')
 print(main_df)
