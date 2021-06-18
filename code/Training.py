@@ -17,13 +17,31 @@ params = yaml.safe_load(open("home/ubuntu/git_env/dvc_june18/params.yaml"))["Tra
 n_est = params["n_estimators"]
 n_j= params["n_jobs"]
 
-X_train=dd.read_csv("/home/shruthi/Shruthi_Tasks/GiTAction/dvc_june10/dvc_demo/out/X_train.csv")
-x=dd.read_csv("/home/shruthi/Shruthi_Tasks/GiTAction/dvc_june10/dvc_demo/out/x.csv")
-y_train=dd.read_csv("/home/shruthi/Shruthi_Tasks/GiTAction/dvc_june10/dvc_demo/out/y_train.csv")
+with dvc.api.open(
+        'out/X_train.csv',
+        repo='https://github.com/shruthi-git-actions/dvc_demo.git',
+        remote='remote_storage',
+        encoding='utf-8'
+        ) as fd1:
+    X_train_c=pd.read_csv(fd1)
+X_train = dd.read_csv(X_train_c)
+with dvc.api.open(
+        'out/x.csv',
+        repo='https://github.com/shruthi-git-actions/dvc_demo.git',
+        remote='remote_storage',
+        encoding='utf-8'
+        ) as fd2:
+    x_c=pd.read_csv(fd2)
 
-#X_train = dd.read_csv(X_train_c)
-#x =dd.read_csv(x_c)
-#y_train =dd.read_csv(y_train_c)
+x =dd.read_csv(x_c)
+with dvc.api.open(
+        'out/y_train.csv',
+        repo='https://github.com/shruthi-git-actions/dvc_demo.git',
+        remote='remote_storage',
+        encoding='utf-8'
+        ) as fd3:
+    y_train_c=pd.read_csv(fd3)
+y_train =dd.read_csv(y_train_c)
 
 client = Client(processes=False)             # create local cluster
 
