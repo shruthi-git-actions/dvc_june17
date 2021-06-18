@@ -12,6 +12,7 @@ from dask_ml.metrics import accuracy_score
 import os, uuid
 import json
 import yaml
+import dvc.api
 
 params = yaml.safe_load(open("home/ubuntu/git_env/dvc_june18/params.yaml"))["featurize"]
 with dvc.api.open(
